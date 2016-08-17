@@ -1,0 +1,513 @@
+<div class="col-md-12 container">
+    <form ng-app="form">
+        <div class="container" ng-controller="formctrl">
+
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#adress">Ocorrência</a></li>
+                <li><a data-toggle="tab" href="#stats">Dados Estatísticos</a></li>
+                <li><a data-toggle="tab" href="#vehicle">Veículo</a></li>
+                <li><a data-toggle="tab" href="#involved">Envolvido</a></li>
+            </ul>
+
+
+            <div class="tab-content">
+                <div id="adress" class="tab-pane fade in active">
+                    <h1 class="form-group col-md-12">Endereço da Ocorrência</h1>
+                    <div class="form-group col-md-10">
+                        <label for="rua">Rua</label>
+                        <input type="text"
+                               class="form-control"
+                               id="rua"
+                               ng-model="ocorrencia.rua">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="numero">Numero/KM</label>
+                        <input type="number" min="0"
+                               class="form-control"
+                               id="numero"
+                               ng-model="ocorrencia.numero">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="cruzamento">Cruzamento com</label>
+                        <input type="text"
+                               class="form-control"
+                               id="cruzamento"
+                               ng-model="ocorrencia.cruzamento">
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label for="bairro">Bairro</label>
+                        <select name="bairro"
+                                id="bairro"
+                                class="form-control"
+                                ng-model="ocorrencia.bairro">
+                            <option value="">Escolha uma opção</option>
+                            <option value="opt1">Opção 1</option>
+                            <option value="opt2">Opção 2</option>
+                            <option value="optn">...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-7">
+                        <label for="ref">Referência</label>
+                        <input type="text"
+                               class="form-control"
+                               id="ref"
+                               ng-model="ocorrencia.ref">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="lat">Lat</label>
+                        <input type="number" min="0"
+                               class="form-control"
+                               id="lat"
+                               ng-model="ocorrencia.lat">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="long">Long</label>
+                        <input type="number" min="0"
+                               class="form-control"
+                               id="long"
+                               ng-model="ocorrencia.long">
+                    </div>
+                </div>
+                <div id="stats" class="tab-pane fade">
+                    <h1 class="col-md-12">Dados Estatisticos</h1>
+                    <div class="form-group col-md-3">
+                        <label for="tipoAcidente">Tipo de Acidente</label>
+                        <select name="tipoAcidente"
+                                id="tipoAcidente"
+                                class="form-control"
+                                ng-model="ocorrencia.tipoAcidente">
+                            <option value="">Escolha uma opção</option>
+                            <option value="opt1">Opção 1</option>
+                            <option value="opt2">Opção 2</option>
+                            <option value="optn">...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="tipoPavimento">Tipo de pavimento</label>
+                        <select name="tipoPavimento"
+                                id="tipoPavimento"
+                                class="form-control"
+                                ng-model="ocorrencia.tipoPavimento">
+                            <option value="">Escolha uma opção</option>
+                            <option value="opt1">Opção 1</option>
+                            <option value="opt2">Opção 2</option>
+                            <option value="optn">...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="superficie">Superficie</label>
+                        <select name="superficie"
+                                id="superficie"
+                                class="form-control"
+                                ng-model="ocorrencia.superficie">
+                            <option value="">Escolha uma opção</option>
+                            <option value="opt1">Opção 1</option>
+                            <option value="opt2">Opção 2</option>
+                            <option value="optn">...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="classif">Classificação do acidente</label>
+                        <select name="classif"
+                                id="classif"
+                                class="form-control"
+                                ng-model="ocorrencia.classif">
+                            <option value="">Escolha uma opção</option>
+                            <option value="opt1">Opção 1</option>
+                            <option value="opt2">Opção 2</option>
+                            <option value="optn">...</option>
+                        </select>
+                    </div>
+                    <div class="form-group  col-md-3">
+                        <label for="estadoPista">Estado da pista</label>
+                        <select name="estadoPista"
+                                id="estadoPista"
+                                class="form-control"
+                                ng-model="ocorrencia.estadoPista">
+                            <option value="">Escolha uma opção</option>
+                            <option value="opt1">Opção 1</option>
+                            <option value="opt2">Opção 2</option>
+                            <option value="optn">...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="perfilPista">Perfil da pista</label>
+                        <select name="perfilPista"
+                                id="perfilPista"
+                                class="form-control"
+                                ng-model="ocorrencia.perfilPista">
+                            <option value="">Escolha uma opção</option>
+                            <option value="opt1">Opção 1</option>
+                            <option value="opt2">Opção 2</option>
+                            <option value="optn">...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="condicaoPista">Condição da pista</label>
+                        <select name="condicaoPista"
+                                id="condicaoPista"
+                                class="form-control"
+                                ng-model="ocorrencia.condicaoPista">
+                            <option value="">Escolha uma opção</option>
+                            <option value="opt1">Opção 1</option>
+                            <option value="opt2">Opção 2</option>
+                            <option value="optn">...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="condicaoClima">Condições climaticas</label>
+                        <select name="condicaoClima"
+                                id="condicaoClima"
+                                class="form-control"
+                                ng-model="ocorrencia.condicaoClima">
+                            <option value="">Escolha uma opção</option>
+                            <option value="opt1">Opção 1</option>
+                            <option value="opt2">Opção 2</option>
+                            <option value="optn">...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="sinalVertical">Sinalização vertical</label>
+                        <select name="sinalVertical"
+                                id="sinalVertical"
+                                class="form-control"
+                                ng-model="ocorrencia.sinalVertical">
+                            <option value="">Escolha uma opção</option>
+                            <option value="opt1">Opção 1</option>
+                            <option value="opt2">Opção 2</option>
+                            <option value="optn">...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="sinalHorizontal">Sinalização horizontal</label>
+                        <select name="sinalHorizontal"
+                                id="sinalHorizontal"
+                                class="form-control"
+                                ng-model="ocorrencia.sinalHorizontal">
+                            <option value="">Escolha uma opção</option>
+                            <option value="opt1">Opção 1</option>
+                            <option value="opt2">Opção 2</option>
+                            <option value="optn">...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="direcao">Direção</label>
+                        <select name="direcao"
+                                id="direcao"
+                                class="form-control"
+                                ng-model="ocorrencia.direcao">
+                            <option value="">Escolha uma opção</option>
+                            <option value="opt1">Opção 1</option>
+                            <option value="opt2">Opção 2</option>
+                            <option value="optn">...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="zona">Zona</label>
+                        <select name="zona"
+                                id="zona"
+                                class="form-control"
+                                ng-model="ocorrencia.zona">
+                            <option value="">Escolha uma opção</option>
+                            <option value="opt1">Opção 1</option>
+                            <option value="opt2">Opção 2</option>
+                            <option value="optn">...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="causaProvavel">Causa provavel</label>
+                        <select name="causaProvavel"
+                                id="causaProvavel"
+                                class="form-control"
+                                ng-model="ocorrencia.causaProvavel">
+                            <option value="">Escolha uma opção</option>
+                            <option value="opt1">Opção 1</option>
+                            <option value="opt2">Opção 2</option>
+                            <option value="optn">...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-9">
+                        <label for="infoAdicional">Info. adicional</label>
+                        <input type="text-box"
+                               id="infoAdicional"
+                               class="form-control"
+                               ng-model="ocorrencia.infoAdicional">
+                    </div>
+                </div>
+                <div id="vehicle" class="tab-pane fade">
+                    <fieldset data-ng-repeat="car in carArray">
+                        <h1 class="col-md-12">Veículo {{car.id}}</h1>
+                        <div class="form-group col-md-3">
+                            <label for="placa">Placa</label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="placa"
+                                   ng-model="car.placa">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="estado">Estado</label>
+                            <select name="estado"
+                                    id="estado"
+                                    class="form-control"
+                                    ng-model="car.estado">
+                                <option value="">Escolha uma opção</option>
+                                <option value="opt1">Opção 1</option>
+                                <option value="opt2">Opção 2</option>
+                                <option value="optn">...</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="cidade">Cidade</label>
+                            <select name="cidade"
+                                    id="cidade"
+                                    class="form-control"
+                                    ng-model="car.cidade">
+                                <option value="">Escolha uma opção</option>
+                                <option value="opt1">Opção 1</option>
+                                <option value="opt2">Opção 2</option>
+                                <option value="optn">...</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="marca">marca</label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="marca"
+                                   ng-model="car.marca">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="modelo">Modelo</label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="modelo"
+                                   ng-model="car.modelo">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="grauDeAvaria">Grau de avaria</label>
+                            <select name="grauDeAvaria"
+                                    id="grauDeAvaria"
+                                    class="form-control"
+                                    ng-model="car.grauDeAvaria">
+                                <option value="">Escolha uma opção</option>
+                                <option value="opt1">Opção 1</option>
+                                <option value="opt2">Opção 2</option>
+                                <option value="optn">...</option>
+                            </select>
+                        </div>
+                        <h3>Quanto ao condutor</h3>
+                        <div class="form-group col-md-4">
+
+                            <label for="catHabilitacao">Categoria da habilitação</label>
+                            <select name="catHabilitacao"
+                                    id="catHabilitacao"
+                                    class="form-control"
+                                    ng-model="car.catHabilitacao">
+                                <option value="">Escolha uma opção</option>
+                                <option value="opt1">Opção 1</option>
+                                <option value="opt2">Opção 2</option>
+                                <option value="optn">...</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="primeiraHabilitacao">Data da primeira habilitação</label>
+                            <input type="date"
+                                   class="form-control"
+                                   id="primeiraHabilitacao"
+                                   ng-model="car.primeiraHabilitacao">
+
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="vctoHabilitacao">Vencimento da habilitação</label>
+                            <input type="date"
+                                   class="form-control"
+                                   id="vctoHabilitacao"
+                                   ng-model="car.vctoHabilitacao">
+                        </div>
+
+
+                        <button class="col-md-1" ng-show="$last" ng-click="removeCar()"><span
+                                class="glyphicon glyphicon-minus" aria-hidden="true"></span>Remover
+                        </button>
+                        <!---->
+                    </fieldset>
+                    <button class="col-md-1" ng-click="addNewCar()"><span class="glyphicon glyphicon-plus"
+                                                                          aria-hidden="true"></span>Adicionar
+                    </button>
+                </div>
+                <div id="involved" class="tab-pane fade">
+
+                    <fieldset data-ng-repeat="involved in involvedArray">
+                        <h1 class="form-group col-md-12">Envolvido {{involved.id}}</h1>
+                        <div class="form-group col-md-5">
+                            <label for="nome">Nome</label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="nome"
+                                   ng-model="involved.nome">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="idade">Idade</label>
+                            <input type="number " min="0"
+                                   class="form-control"
+                                   id="idade"
+                                   ng-model="involved.idade">
+                        </div>
+                        <div class="form-group col-md-1">
+                            <label for="sexo">Sexo</label>
+                            <select name="sexo"
+                                    id="sexo"
+                                    class="form-control"
+                                    ng-model="involved.sexo">
+                                <option value="">Escolha uma opção</option>
+                                <option value="opt1">Opção 1</option>
+                                <option value="opt2">Opção 2</option>
+                                <option value="optn">...</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="ruaEnvolvido">Rua</label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="ruaEnvolvido"
+                                   ng-model="involved.ruaEnvolvido">
+                        </div>
+                        <div class="form-group col-md-1">
+                            <label for="numeroEnvolvido">Numero</label>
+                            <input type="number" min="0"
+                                   class="form-control"
+                                   id="numeroEnvolvido"
+                                   ng-model="involved.numeroEnvolvido">
+                        </div>
+                        <div class="form-group col-md-11">
+                            <label for="esquinaEnvolvido">Esquina</label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="esquinaEnvolvido"
+                                   ng-model="involved.esquinaEnvolvido">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="bairroEnvolvido">Bairro</label>
+                            <select name="bairroEnvolvido"
+                                    id="bairroEnvolvido"
+                                    class="form-control"
+                                    ng-model="involved.bairroEnvolvido">
+                                <option value="">Escolha uma opção</option>
+                                <option value="opt1">Opção 1</option>
+                                <option value="opt2">Opção 2</option>
+                                <option value="optn">...</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-9">
+                            <label for="refEnvolvido">Referência</label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="refEnvolvido"
+                                   ng-model="involved.refEnvolvido">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="nomeMae">Nome da mãe</label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="nomeMae"
+                                   ng-model="involved.nomeMae">
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="situacao">Situação</label>
+                            <select name="situacao"
+                                    id="situacao"
+                                    class="form-control"
+                                    ng-model="involved.situacao">
+                                <option value="">Escolha uma opção</option>
+                                <option value="opt1">Opção 1</option>
+                                <option value="opt2">Opção 2</option>
+                                <option value="optn">...</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="tipoVeiculo">Tipo de veículo</label>
+                            <select name="tipoVeiculo"
+                                    id="tipoVeiculo"
+                                    class="form-control"
+                                    ng-model="involved.tipoVeiculo">
+                                <option value="">Escolha uma opção</option>
+                                <option value="opt1">Opção 1</option>
+                                <option value="opt2">Opção 2</option>
+                                <option value="optn">...</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="posVeiculo">Posição no veículo</label>
+                            <select name="posVeiculo"
+                                    id="posVeiculo"
+                                    class="form-control"
+                                    ng-model="involved.posVeiculo">
+                                <option value="">Escolha uma opção</option>
+                                <option value="opt1">Opção 1</option>
+                                <option value="opt2">Opção 2</option>
+                                <option value="optn">...</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="condSeguranca">Condição de segurança</label>
+                            <select name="condSeguranca"
+                                    id="condSeguranca"
+                                    class="form-control"
+                                    ng-model="involved.condSeguranca">
+                                <option value="">Escolha uma opção</option>
+                                <option value="opt1">Opção 1</option>
+                                <option value="opt2">Opção 2</option>
+                                <option value="optn">...</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="gravLesao">Gravidade da lesão</label>
+                            <select name="gravLesao"
+                                    id="gravLesao"
+                                    class="form-control"
+                                    ng-model="involved.gravLesao">
+                                <option value="">Escolha uma opção</option>
+                                <option value="opt1">Opção 1</option>
+                                <option value="opt2">Opção 2</option>
+                                <option value="optn">...</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-9">
+                            <label for="condProvavel">conduta provavel</label>
+                            <select name="condProvavel"
+                                    id="condProvavel"
+                                    class="form-control"
+                                    ng-model="involved.condProvavel">
+                                <option value="">Escolha uma opção</option>
+                                <option value="opt1">Opção 1</option>
+                                <option value="opt2">Opção 2</option>
+                                <option value="optn">...</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="evolucao">Evolução</label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="evolucao"
+                                   ng-model="involved.evolucao">
+                        </div>
+                        <button class="col-md-1" ng-show="$last" ng-click="removeInvolved()"><span
+                                class="glyphicon glyphicon-minus" aria-hidden="true"></span>Remover
+                        </button>
+                    </fieldset>
+                    <button class="col-md-1" ng-click="addNewInvolved()"><span class="glyphicon glyphicon-plus"
+                                                                               aria-hidden="true"></span>Adicionar
+                    </button>
+                </div>
+            </div>
+            <pre> {{ocorrencia |json}}</pre>
+
+            <div class="form-group">
+                <button class="btn btn-primary" ng-click="onSubmit()">Register
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <script src="/javascripts/form.js"></script>
+
+</div>
