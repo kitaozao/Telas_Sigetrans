@@ -9,17 +9,246 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head >
 <body>
-<div ng-controller>
-    <div class="col-md-3 container">
-        <h1>hello</h1>
-    </div>
-    <div class="col-md-9 container">
-        <h1>teste</h1>
-    </div>
+<div ng-controller="obitos">
+
+    <form>
+        <div class="container">
+            <div class="row">
+                <h1>Dados gerais</h1>
+                <div class="form-group col-md-4">
+                    <label for="ano" >Ano de referência</label >
+                    <input type="number"
+                           class="form-control"
+                           id="ano"
+                           ng-model="obitos.ano">
+                </div >
+                <div class="form-group col-md-4">
+                    <label for="data" >Data da ocorrência</label >
+                    <input type="date"
+                           class="form-control"
+                           id="data"
+                           ng-model="obitos.data">
+                </div >
+                <div class="form-group col-md-4">
+                    <label for="hora" >Horário</label >
+                    <input type="time"
+                           class="form-control"
+                           id="hora"
+                           ng-model="obitos.hora">
+                </div >
+                <div class="form-group col-md-12">
+                    <label for="ano" >Endereço</label >
+                    <input type="text"
+                           class="form-control"
+                           id="endereco"
+                           ng-model="obitos.endereco">
+                </div >
+                <div class="form-group col-md-3" >
+                    <label for="zona" >Trecho (zona)</label >
+                    <select name="zona"
+                            id="zona"
+                            class="form-control"
+                            ng-model="obitos.zona">
+                        <option value="" >Escolha uma opção</option >
+                        <option value="rural" >Rural</option >
+                        <option value="urbana" >Urbana</option >
+                    </select >
+                </div >
+                <div class="form-group col-md-9">
+                    <label for="vitima" >Nome da vítima</label >
+                    <input type="text"
+                           class="form-control"
+                           id="vitima"
+                           ng-model="obitos.vitima">
+                </div >
+                <div class="form-group col-md-3">
+                    <label for="idade" >Idade da vítima</label >
+                    <input type="text"
+                           class="form-control"
+                           id="idade"
+                           ng-model="obitos.idade">
+                </div >
+                <div class="form-group col-md-3" >
+                    <label for="sexo" >Sexo da vítima</label >
+                    <select name="sexo"
+                            id="sexo"
+                            class="form-control"
+                            ng-model="obitos.sexo">
+                        <option value="" >Escolha uma opção</option >
+                        <option value="m" >Masculino</option >
+                        <option value="f" >Feminino</option >
+                    </select >
+                </div >
+            </div>
+            <div class="row">
+                <h1>Fatores de risco</h1>
+                <div class="form-group col-md-4" >
+                    <label for="velocidade" >Velocidade</label >
+                    <select name="velocidade"
+                            id="velocidade"
+                            class="form-control"
+                            ng-model="obitos.velocidade">
+                        <option value="" >Escolha uma opção</option >
+                        <option value=0 >0</option >
+                        <option value=2 >2</option >
+                        <option value=4 >4</option >
+                        <option value=6 >6</option >
+                        <option value=8 >8</option >
+                        <option value=10 >10</option >
+                    </select >
+                </div >
+                <div class="form-group col-md-4" >
+                    <label for="alcooldrogas" >Álcool/Drogas</label >
+                    <select name="alcooldrogas"
+                            id="alcooldrogas"
+                            class="form-control"
+                            ng-model="obitos.alcooldrogas">
+                        <option value="" >Escolha uma opção</option >
+                        <option value=0 >0</option >
+                        <option value=2 >2</option >
+                        <option value=4 >4</option >
+                        <option value=6 >6</option >
+                        <option value=8 >8</option >
+                        <option value=10 >10</option >
+                    </select >
+                </div >
+                <div class="form-group col-md-4" >
+                    <label for="infra" >Infraestrutura</label >
+                    <select name="infra"
+                            id="infra"
+                            class="form-control"
+                            ng-model="obitos.infra">
+                        <option value="" >Escolha uma opção</option >
+                        <option value=0 >0</option >
+                        <option value=2 >2</option >
+                        <option value=4 >4</option >
+                        <option value=6 >6</option >
+                        <option value=8 >8</option >
+                        <option value=10 >10</option >
+                    </select >
+                </div >
+                <div class="form-group col-md-4" >
+                    <label for="veiculo" >Veículo</label >
+                    <select name="veiculo"
+                            id="veiculo"
+                            class="form-control"
+                            ng-model="obitos.veiculo">
+                        <option value="" >Escolha uma opção</option >
+                        <option value=0 >0</option >
+                        <option value=2 >2</option >
+                        <option value=4 >4</option >
+                        <option value=6 >6</option >
+                        <option value=8 >8</option >
+                        <option value=10 >10</option >
+                    </select >
+                </div >
+                <div class="form-group col-md-4" >
+                    <label for="fadiga" >Fadiga</label >
+                    <select name="fadiga"
+                            id="fadiga"
+                            class="form-control"
+                            ng-model="obitos.fadiga">
+                        <option value="" >Escolha uma opção</option >
+                        <option value=0 >0</option >
+                        <option value=2 >2</option >
+                        <option value=4 >4</option >
+                        <option value=6 >6</option >
+                        <option value=8 >8</option >
+                        <option value=10 >10</option >
+                    </select >
+                </div >
+                <div class="form-group col-md-4" >
+                    <label for="visibilidade" >Visibilidade</label >
+                    <select name="visibilidade"
+                            id="visibilidade"
+                            class="form-control"
+                            ng-model="obitos.visibilidade">
+                        <option value="" >Escolha uma opção</option >
+                        <option value=0 >0</option >
+                        <option value=2 >2</option >
+                        <option value=4 >4</option >
+                        <option value=6 >6</option >
+                        <option value=8 >8</option >
+                        <option value=10 >10</option >
+                    </select >
+                </div >
+                <div class="form-group col-md-4" >
+                    <label for="problemaspsicologicos" >Problemas psicológicos</label >
+                    <select name="problemaspsicologicos"
+                            id="problemaspsicologicos"
+                            class="form-control"
+                            ng-model="obitos.problemaspsicologicos">
+                        <option value="" >Escolha uma opção</option >
+                        <option value=0 >0</option >
+                        <option value=2 >2</option >
+                        <option value=4 >4</option >
+                        <option value=6 >6</option >
+                        <option value=8 >8</option >
+                        <option value=10 >10</option >
+                    </select >
+                </div >
+                <div class="form-group col-md-4" >
+                    <label for="CelularDistracao" >Celular / distração</label >
+                    <select name="CelularDistracao"
+                            id="CelularDistracao"
+                            class="form-control"
+                            ng-model="obitos.CelularDistracao">
+                        <option value="" >Escolha uma opção</option >
+                        <option value=0 >0</option >
+                        <option value=2 >2</option >
+                        <option value=4 >4</option >
+                        <option value=6 >6</option >
+                        <option value=8 >8</option >
+                        <option value=10 >10</option >
+                    </select >
+                </div >
+                <div class="form-group col-md-4" >
+                    <label for="clima" >Condições climáticas</label >
+                    <select name="clima"
+                            id="clima"
+                            class="form-control"
+                            ng-model="obitos.clima">
+                        <option value="" >Escolha uma opção</option >
+                        <option value=0 >0</option >
+                        <option value=2 >2</option >
+                        <option value=4 >4</option >
+                        <option value=6 >6</option >
+                        <option value=8 >8</option >
+                        <option value=10 >10</option >
+                    </select >
+                </div >
+                <div class="form-group col-md-12" >
+                    <label for="responsavel" >Possível responsavel pelas condutas de risco</label >
+                    <select name="responsavel"
+                            id="responsavel"
+                            class="form-control"
+                            ng-model="obitos.responsavel">
+                        <option value="" >Escolha uma opção</option >
+                        <option value= "condutorVeiculoLeve">Condutor Veículo Leve</option >
+                        <option value= "condutorVeiculoPesado">Condutor Veículo Pesado</option >
+                        <option value= "motociclistaGarupa">Motociclista/Garupa</option >
+                        <option value= "motonetaGarupa">Motociclista/Garupa</option >
+                        <option value= "cilista"> Ciclista</option >
+                        <option value= "condutorPassageiroVan"> Condutor/Passageiro/Van </option >
+                        <option value= "Pedestre"> Pedestre </option >
+
+                    </select >
+                </div >
+            </div>
+            <div class="row">
+                <h1>Condutas de risco</h1>
+            </div>
+            <div class="row">
+                <h1>Usuário</h1>
+            </div>
+            <div class="row">
+                <h1>Outros</h1>
+            </div>
+        </div>
+    </form>
+
+    <pre>{{obitos}}</pre>
 </div>
-
-
-
 <script src="/node_modules/angular/angular.min.js"></script>
 <script src="/javascripts/obitos.js"></script>
 </body>
