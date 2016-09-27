@@ -504,15 +504,28 @@
                     </select >
                 </div >
                 <h5><b>Órgãos Responsáveis pelas informações: </b></h5>
-                <div class="row form-group container">
-
-                    <div class="col-md-2"><input type="checkbox" ng-model="orgaos.pm">PM</div>
-                    <div class="col-md-2"><input type="checkbox" ng-model="orgaos.prf">PRF</div>
-                    <div class="col-md-2"><input type="checkbox" ng-model="orgaos.pre">PRE</div>
-                    <div class="col-md-2"><input type="checkbox" ng-model="orgaos.cettrans">CETTRANS</div>
-                    <div class="col-md-2"><input type="checkbox" ng-model="orgaos.outro">Outro</div>
-
+                <div ng-repeat="o in orgaos">
+                    <div class="action-checkbox">
+                        <input id="{{o.name}}" type="checkbox" value="{{o.name}}" ng-checked="selection.indexOf(o.name) > -1" ng-click="toogleSelection(o.name)" />
+                        <label for="{{o.name}}"></label>
+                        {{o.name}}
+                    </div>
                 </div>
+
+
+
+
+
+
+                <!--<div class="row form-group container">-->
+
+                    <!--<div class="col-md-2"><input type="checkbox" ng-model="orgaos.pm">PM</div>-->
+                    <!--<div class="col-md-2"><input type="checkbox" ng-model="orgaos.prf">PRF</div>-->
+                    <!--<div class="col-md-2"><input type="checkbox" ng-model="orgaos.pre">PRE</div>-->
+                    <!--<div class="col-md-2"><input type="checkbox" ng-model="orgaos.cettrans">CETTRANS</div>-->
+                    <!--<div class="col-md-2"><input type="checkbox" ng-model="orgaos.outro">Outro</div>-->
+
+                <!--</div>-->
 
 
             </div>
