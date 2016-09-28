@@ -100,11 +100,11 @@
                     </select >
                 </div >
                 <div class="form-group col-md-4" >
-                    <label for="alcooldrogas" >Álcool/Drogas</label >
-                    <select name="alcooldrogas"
-                            id="alcooldrogas"
+                    <label for="alcoolDrogas" >Álcool/Drogas</label >
+                    <select name="alcoolDrogas"
+                            id="alcoolDrogas"
                             class="form-control"
-                            ng-model="fatores.alcooldrogas">
+                            ng-model="fatores.alcoolDrogas">
                         <option value="" >Escolha uma opção</option >
                         <option value=0 >0</option >
                         <option value=2 >2</option >
@@ -175,11 +175,11 @@
                     </select >
                 </div >
                 <div class="form-group col-md-4" >
-                    <label for="problemaspsicologicos" >Problemas psicológicos</label >
-                    <select name="problemaspsicologicos"
-                            id="problemaspsicologicos"
+                    <label for="problemasPsicologicos" >Problemas psicológicos</label >
+                    <select name="problemasPsicologicos"
+                            id="problemasPsicologicos"
                             class="form-control"
-                            ng-model="fatores.problemaspsicologicos">
+                            ng-model="fatores.problemasPsicologicos">
                         <option value="" >Escolha uma opção</option >
                         <option value=0 >0</option >
                         <option value=2 >2</option >
@@ -190,11 +190,11 @@
                     </select >
                 </div >
                 <div class="form-group col-md-4" >
-                    <label for="CelularDistracao" >Celular / distração</label >
-                    <select name="CelularDistracao"
-                            id="CelularDistracao"
+                    <label for="celularDistracao" >Celular / distração</label >
+                    <select name="celularDistracao"
+                            id="celularDistracao"
                             class="form-control"
-                            ng-model="fatores.CelularDistracao">
+                            ng-model="fatores.celularDistracao">
                         <option value="" >Escolha uma opção</option >
                         <option value=0 >0</option >
                         <option value=2 >2</option >
@@ -221,6 +221,7 @@
                 </div >
 
             </div>
+            <!--ALTERAR AQUI-->
             <div class="form-group col-md-12" >
                 <label for="responsavelFatores" >Possível responsavel pelos fatores de risco</label >
                 <select name="responsavelFatores"
@@ -231,10 +232,10 @@
                     <option value= "condutorVeiculoLeve">Condutor Veículo Leve</option >
                     <option value= "condutorVeiculoPesado">Condutor Veículo Pesado</option >
                     <option value= "motociclistaGarupa">Motociclista/Garupa</option >
-                    <option value= "motonetaGarupa">Motociclista/Garupa</option >
-                    <option value= "cilista"> Ciclista</option >
+                    <option value= "motonetaGarupa">Motoneta/Garupa</option >
+                    <option value= "ciclista"> Ciclista</option >
                     <option value= "condutorPassageiroVan"> Condutor/Passageiro/Van </option >
-                    <option value= "Pedestre"> Pedestre </option >
+                    <option value= "pedestre"> Pedestre </option >
 
                 </select >
             </div >
@@ -402,10 +403,10 @@
                     <option value= "condutorVeiculoLeve">Condutor Veículo Leve</option >
                     <option value= "condutorVeiculoPesado">Condutor Veículo Pesado</option >
                     <option value= "motociclistaGarupa">Motociclista/Garupa</option >
-                    <option value= "motonetaGarupa">Motociclista/Garupa</option >
-                    <option value= "cilista"> Ciclista</option >
+                    <option value= "motonetaGarupa">Motoneta/Garupa</option >
+                    <option value= "ciclista"> Ciclista</option >
                     <option value= "condutorPassageiroVan"> Condutor/Passageiro/Van </option >
-                    <option value= "Pedestre"> Pedestre </option >
+                    <option value= "pedestre"> Pedestre </option >
 
                 </select >
             </div >
@@ -502,32 +503,24 @@
                         <option value="sim" >Sim</option >
                         <option value="nao" >Não</option >
                     </select >
-                </div >
-                <h5><b>Órgãos Responsáveis pelas informações: </b></h5>
-                <div ng-repeat="o in orgaos">
-                    <div class="action-checkbox">
-                        <input id="{{o.name}}" type="checkbox" value="{{o.name}}" ng-checked="selection.indexOf(o.name) > -1" ng-click="toogleSelection(o.name)" />
-                        <label for="{{o.name}}"></label>
-                        {{o.name}}
+                </div>
+                <div class="form-group col-md-12">
+                    <h5><b>Órgãos Responsáveis pelas informações: </b></h5>
+                    <div class="col-sm-2" ng-repeat="o in orgaos">
+                        <div class="action-checkbox">
+                            <input id="{{o.name}}" type="checkbox" value="{{o.name}}" ng-checked="selection.indexOf(o.name) > -1" ng-click="toggleOrgaosSelection(o.id)" />
+                            <label for="{{o.name}}"></label>
+                            {{o.name}}
+                        </div>
                     </div>
                 </div>
-
-
-
-
-
-
                 <!--<div class="row form-group container">-->
-
                     <!--<div class="col-md-2"><input type="checkbox" ng-model="orgaos.pm">PM</div>-->
                     <!--<div class="col-md-2"><input type="checkbox" ng-model="orgaos.prf">PRF</div>-->
                     <!--<div class="col-md-2"><input type="checkbox" ng-model="orgaos.pre">PRE</div>-->
                     <!--<div class="col-md-2"><input type="checkbox" ng-model="orgaos.cettrans">CETTRANS</div>-->
                     <!--<div class="col-md-2"><input type="checkbox" ng-model="orgaos.outro">Outro</div>-->
-
                 <!--</div>-->
-
-
             </div>
             <div class="row">
                 <h1>Quanto a causa do acidente</h1>
@@ -539,21 +532,29 @@
                            ng-model="causa.infoAdicional">
                 </div >
             </div>
-            <h5><b>Principais causas avaliadas: </b></h5>
-            <div class="row form-group container">
-
-                <div class="col-md-2"><input type="checkbox" ng-model="causa.velocidade">Excesso de velocidade</div>
-                <div class="col-md-2"><input type="checkbox" ng-model="causa.alcoolDrogas">Uso de álcool/drogas</div>
-                <div class="col-md-2"><input type="checkbox" ng-model="causa.imprudenciaCondutor">Imprudência do Condutor</div>
-                <div class="col-md-2"><input type="checkbox" ng-model="causa.impericiaCondutor">Imperícia do Condutor</div>
-                <div class="col-md-2"><input type="checkbox" ng-model="causa.psicologico">Problemas psicológicos</div>
-                <div class="col-md-2"><input type="checkbox" ng-model="causa.imprudenciaPedestre">Imprudência do pedestre</div>
-                <div class="col-md-2"><input type="checkbox" ng-model="causa.problemasVeiculo">Problemas do veículo</div>
-                <div class="col-md-2"><input type="checkbox" ng-model="causa.infraestrutura">Problemas na infraestrutura ou via</div>
-                <div class="col-md-2"><input type="checkbox" ng-model="causa.clima">Condições climáticas e visibilidade</div>
-                <div class="col-md-2"><input type="checkbox" ng-model="causa.fadigaDistracao">Fadiga ou distração</div>
-                <div class="col-md-2"><input type="checkbox" ng-model="causa.outro">Outro</div>
+            <div class="row container">
+                <h5><b>Principais causas avaliadas: </b></h5>
+                <div class="col-sm-6" ng-repeat="c in causa">
+                    <div class="action-checkbox">
+                        <input id="{{c.name}}" type="checkbox" value="{{c.name}}" ng-checked="selection.indexOf(c.name) > -1" ng-click="toggleCausaSelection(c.id)" />
+                        <label for="{{c.name}}"></label>
+                        {{c.name}}
+                    </div>
+                </div>
             </div>
+            <!--<div class="row form-group container">-->
+                <!--<div class="col-md-2"><input type="checkbox" ng-model="causa.velocidade">Excesso de velocidade</div>-->
+                <!--<div class="col-md-2"><input type="checkbox" ng-model="causa.alcoolDrogas">Uso de álcool/drogas</div>-->
+                <!--<div class="col-md-2"><input type="checkbox" ng-model="causa.imprudenciaCondutor">Imprudência do Condutor</div>-->
+                <!--<div class="col-md-2"><input type="checkbox" ng-model="causa.impericiaCondutor">Imperícia do Condutor</div>-->
+                <!--<div class="col-md-2"><input type="checkbox" ng-model="causa.psicologico">Problemas psicológicos</div>-->
+                <!--<div class="col-md-2"><input type="checkbox" ng-model="causa.imprudenciaPedestre">Imprudência do pedestre</div>-->
+                <!--<div class="col-md-2"><input type="checkbox" ng-model="causa.problemasVeiculo">Problemas do veículo</div>-->
+                <!--<div class="col-md-2"><input type="checkbox" ng-model="causa.infraestrutura">Problemas na infraestrutura ou via</div>-->
+                <!--<div class="col-md-2"><input type="checkbox" ng-model="causa.clima">Condições climáticas e visibilidade</div>-->
+                <!--<div class="col-md-2"><input type="checkbox" ng-model="causa.fadigaDistracao">Fadiga ou distração</div>-->
+                <!--<div class="col-md-2"><input type="checkbox" ng-model="causa.outro">Outro</div>-->
+            <!--</div>-->
             <div class="form-group">
                 <button class="btn btn-primary" ng-click="submit()">Registrar
                 </button>
