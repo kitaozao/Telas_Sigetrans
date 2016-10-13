@@ -222,23 +222,34 @@
 
             </div>
             <!--ALTERAR AQUI-->
-            <div class="form-group col-md-12" >
-                <label for="responsavelFatores" >Possível responsavel pelos fatores de risco</label >
-                <select name="responsavelFatores"
-                        id="responsavelFatores"
-                        class="form-control"
-                        ng-model="fatores.responsavelFatores">
-                    <option value="" >Escolha uma opção</option >
-                    <option value= "condutorVeiculoLeve">Condutor Veículo Leve</option >
-                    <option value= "condutorVeiculoPesado">Condutor Veículo Pesado</option >
-                    <option value= "motociclistaGarupa">Motociclista/Garupa</option >
-                    <option value= "motonetaGarupa">Motoneta/Garupa</option >
-                    <option value= "ciclista"> Ciclista</option >
-                    <option value= "condutorPassageiroVan"> Condutor/Passageiro/Van </option >
-                    <option value= "pedestre"> Pedestre </option >
+            <!--<div class="form-group col-md-12" >-->
+                <!--<label for="responsavelFatores" >Possível responsavel pelos fatores de risco</label >-->
+                <!--<select name="responsavelFatores"-->
+                        <!--id="responsavelFatores"-->
+                        <!--class="form-control"-->
+                        <!--ng-model="fatores.responsavelFatores">-->
+                    <!--<option value="" >Escolha uma opção</option >-->
+                    <!--<option value= "condutorVeiculoLeve">Condutor Veículo Leve</option >-->
+                    <!--<option value= "condutorVeiculoPesado">Condutor Veículo Pesado</option >-->
+                    <!--<option value= "motociclistaGarupa">Motociclista/Garupa</option >-->
+                    <!--<option value= "motonetaGarupa">Motoneta/Garupa</option >-->
+                    <!--<option value= "ciclista"> Ciclista</option >-->
+                    <!--<option value= "condutorPassageiroVan"> Condutor/Passageiro/Van </option >-->
+                    <!--<option value= "pedestre"> Pedestre </option >-->
 
-                </select >
-            </div >
+                <!--</select >-->
+            <!--</div >-->
+
+            <div class="row container">
+                <h5><b>Possível responsavel pelos fatores de risco </b></h5>
+                <div class="col-sm-4" ng-repeat="f in responsaveisFatores">
+                    <div class="action-checkbox">
+                        <input id="{{f.name}}" type="checkbox" value="{{f.name}}" ng-checked="selection.indexOf(f.name) > -1" ng-click="toggleFatoresSelection(f.id)" />
+                        <label for="{{f.name}}"></label>
+                        {{f.name}}
+                    </div>
+                </div>
+            </div>
 
             <!-- só pra conseguir comitar-->
             <!-- Condutas de risco -->
