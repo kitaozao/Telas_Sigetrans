@@ -14,7 +14,7 @@ app.controller('obitos', function($scope, $http){
         {name:"Condutor/Passageiro/Van",    id:"condutorPassageiroVan"},
         {name:"Pedestre",                   id:"pedestre"}
         ];
-    $scope.fatoresSelecionados=[];
+    $scope.fatores.fatoresSelecionados=[];
     $scope.condutas={};
     $scope.usuario={};
     $scope.outros={};
@@ -40,14 +40,16 @@ app.controller('obitos', function($scope, $http){
         {name:"Outro",                              id:"outro"}
         ];
     $scope.causaSelecionados=[];
-    $scope.obitos ={"infoGeral":$scope.geral,
+    $scope.obitos ={
+                    "infoGeral":$scope.geral,
                     "fatoresDeRisco":$scope.fatores,
                     "condutasDeRisco":$scope.condutas,
                     "usuario":$scope.usuario,
                     "outros":$scope.outros,
                     "orgaosResponsaveis":$scope.orgaosSelecionados,
-                    "causa":$scope.causaSelecionados,
-                    "responsaveisFatoresRisco":$scope.fatoresSelecionados};
+                    "causa":$scope.causaSelecionados
+                    //"responsaveisFatoresRisco":$scope.fatores.fatoresSelecionados
+                    };
 
     $scope.toggleOrgaosSelection = function toggleOrgaosSelection(nomeOrgao){
         var idx = $scope.orgaosSelecionados.indexOf(nomeOrgao);
@@ -72,12 +74,12 @@ app.controller('obitos', function($scope, $http){
     };
 
     $scope.toggleFatoresSelection = function toggleFatoresSelection(nomeFator){
-        var idx = $scope.fatoresSelecionados.indexOf(nomeFator);
+        var idx = $scope.fatores.fatoresSelecionados.indexOf(nomeFator);
 
         if(idx > -1){
-            $scope.fatoresSelecionados.splice(idx, 1);
+            $scope.fatores.fatoresSelecionados.splice(idx, 1);
         }else{
-            $scope.fatoresSelecionados.push(nomeFator);
+            $scope.fatores.fatoresSelecionados.push(nomeFator);
         }
 
     };
