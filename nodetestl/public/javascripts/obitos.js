@@ -8,10 +8,10 @@ app.controller('obitos', function($scope, $http){
     $scope.responsaveisFatores=[
         {name:"Condutor Veículo Leve",      id:"condutorVeiculoLeve"},
         {name:"Condutor Veículo Pesado",    id:"condutorVeiculoPesado"},
+        {name:"Condutor/Passageiro/Van",    id:"condutorPassageiroVan"},
         {name:"Motociclista/Garupa",        id:"motociclistaGarupa"},
         {name:"Motoneta/Garupa",            id:"motonetaGarupa"},
         {name:"Ciclista",                   id:"ciclista"},
-        {name:"Condutor/Passageiro/Van",    id:"condutorPassageiroVan"},
         {name:"Pedestre",                   id:"pedestre"}
         ];
     $scope.fatores.fatoresSelecionados=[];
@@ -19,23 +19,23 @@ app.controller('obitos', function($scope, $http){
     $scope.usuario={};
     $scope.outros={};
     $scope.orgaos=[
-        {name:"PM",         id:"PM"},
-        {name:"PRF",        id:"PRF"},
-        {name:"PRE",        id:"PRE"},
         {name:"CETTRANS",   id:"CETTRANS"},
+        {name:"PM",         id:"PM"},
+        {name:"PRE",        id:"PRE"},
+        {name:"PRF",        id:"PRF"},
         {name:"Outro",      id:"outro"}
         ];
     $scope.orgaosSelecionados=[];
     $scope.causa=[
         {name:"Excesso de velocidade",              id:"velocidade"},
-        {name:"Uso de álcool/drogas",               id:"alcoolDrogas"},
+        {name:"Problemas do veículo",               id:"problemasVeiculo"},
         {name:"Imprudência do Condutor",            id:"imprudenciaCondutor"},
-        {name:"Imperícia do Condutor",              id:"impericiaCondutor"},
+        {name:"Uso de álcool/drogas",               id:"alcoolDrogas"},
         {name:"Problemas psicológicos",             id:"psicologico"},
         {name:"Imprudência do pedestre",            id:"imprudenciaPedestre"},
-        {name:"Problemas do veículo",               id:"problemasVeiculo"},
-        {name:"Problemas na infraestrutura ou via", id:"infraEstrutura"},
         {name:"Condições climáticas e visibilidade",id:"clima"},
+        {name:"Problemas na infraestrutura ou via", id:"infraEstrutura"},
+        {name:"Imperícia do Condutor",              id:"impericiaCondutor"},
         {name:"Fadiga ou distração",                id:"fadigaDistracao"},
         {name:"Outro",                              id:"outro"}
         ];

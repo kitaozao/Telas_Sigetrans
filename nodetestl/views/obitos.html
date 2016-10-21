@@ -65,6 +65,8 @@
                         <div class="form-group col-md-4">
                             <label for="ano" >Ano de referência</label >
                             <input type="number"
+                                   min="1"
+                                   step="1"
                                    class="form-control"
                                    id="ano"
                                    ng-model="geral.ano">
@@ -110,12 +112,12 @@
                         </div >
                         <div class="form-group col-md-3">
                             <label for="idade" >Idade da vítima</label >
-                            <input type="text"
+                            <input type="number" min="1" step="1"
                                    class="form-control"
                                    id="idade"
                                    ng-model="geral.idade">
                         </div >
-                        <div class="form-group col-md-3" >
+                        <div class="form-group col-md-4" >
                             <label for="sexo" >Sexo da vítima</label >
                             <select name="sexo"
                                     id="sexo"
@@ -126,10 +128,24 @@
                                 <option value="f" >Feminino</option >
                             </select >
                         </div >
+
+                        <div class="form-group col-md-5" >
+                            <label for="veiculoVitima" >Veículo da vítima</label >
+                            <select name="veiculoVitima"
+                                    id="veiculoVitima"
+                                    class="form-control"
+                                    ng-model="geral.veiculoVitima">
+                                <option value="" >Escolha uma opção</option >
+                                <option value="veiculoAtingido" >Atingido</option >
+                                <option value="veiculoProvocador" >Provocador</option >
+                            </select >
+                        </div >
+
                     </div>
                     <!-- Fatores de risco -->
                     <div class="row">
                         <h1>Fatores de risco</h1>
+
                         <div class="form-group col-md-4" >
                             <label for="velocidade" >Velocidade</label >
                             <select name="velocidade"
@@ -145,6 +161,7 @@
                                 <option value=10 >10</option >
                             </select >
                         </div >
+
                         <div class="form-group col-md-4" >
                             <label for="alcoolDrogas" >Álcool/Drogas</label >
                             <select name="alcoolDrogas"
@@ -160,6 +177,7 @@
                                 <option value=10 >10</option >
                             </select >
                         </div >
+
                         <div class="form-group col-md-4" >
                             <label for="infra" >Infraestrutura</label >
                             <select name="infra"
@@ -175,6 +193,7 @@
                                 <option value=10 >10</option >
                             </select >
                         </div >
+
                         <div class="form-group col-md-4" >
                             <label for="veiculo" >Veículo</label >
                             <select name="veiculo"
@@ -190,6 +209,7 @@
                                 <option value=10 >10</option >
                             </select >
                         </div >
+
                         <div class="form-group col-md-4" >
                             <label for="fadiga" >Fadiga</label >
                             <select name="fadiga"
@@ -205,6 +225,7 @@
                                 <option value=10 >10</option >
                             </select >
                         </div >
+
                         <div class="form-group col-md-4" >
                             <label for="visibilidade" >Visibilidade</label >
                             <select name="visibilidade"
@@ -220,6 +241,7 @@
                                 <option value=10 >10</option >
                             </select >
                         </div >
+
                         <div class="form-group col-md-4" >
                             <label for="problemasPsicologicos" >Problemas psicológicos</label >
                             <select name="problemasPsicologicos"
@@ -235,6 +257,7 @@
                                 <option value=10 >10</option >
                             </select >
                         </div >
+
                         <div class="form-group col-md-4" >
                             <label for="celularDistracao" >Celular / distração</label >
                             <select name="celularDistracao"
@@ -250,6 +273,7 @@
                                 <option value=10 >10</option >
                             </select >
                         </div >
+
                         <div class="form-group col-md-4" >
                             <label for="clima" >Condições climáticas</label >
                             <select name="clima"
@@ -265,9 +289,21 @@
                                 <option value=10 >10</option >
                             </select >
                         </div >
+                        <div class="form-group col-md-4" >
+                            <div class="row container">
+                                <h5><b>Possível responsavel pelos fatores de risco </b></h5>
+                                <div class="col-sm-4" ng-repeat="f in responsaveisFatores">
+                                    <div class="action-checkbox">
+                                        <input id="{{f.name}}" type="checkbox" value="{{f.name}}" ng-checked="selection.indexOf(f.name) > -1" ng-click="toggleFatoresSelection(f.id)" />
+                                        <label for="{{f.name}}"></label>
+                                        {{f.name}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
-                    <!--ALTERAR AQUI-->
+
                     <!--<div class="form-group col-md-12" >-->
                         <!--<label for="responsavelFatores" >Possível responsavel pelos fatores de risco</label >-->
                         <!--<select name="responsavelFatores"-->
@@ -286,18 +322,6 @@
                         <!--</select >-->
                     <!--</div >-->
 
-                    <div class="row container">
-                        <h5><b>Possível responsavel pelos fatores de risco </b></h5>
-                        <div class="col-sm-4" ng-repeat="f in responsaveisFatores">
-                            <div class="action-checkbox">
-                                <input id="{{f.name}}" type="checkbox" value="{{f.name}}" ng-checked="selection.indexOf(f.name) > -1" ng-click="toggleFatoresSelection(f.id)" />
-                                <label for="{{f.name}}"></label>
-                                {{f.name}}
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- só pra conseguir comitar-->
                     <!-- Condutas de risco -->
                     <div class="row">
                         <h1>Condutas de risco</h1>
@@ -451,24 +475,27 @@
                                 <option value=10 >10</option >
                             </select >
                         </div >
-                    </div>
-                    <div class="form-group col-md-12" >
-                        <label for="responsavelCondutas" >Possível responsavel pelas condutas de risco</label >
-                        <select name="responsavelCondutas"
-                                id="responsavelCondutas"
-                                class="form-control"
-                                ng-model="condutas.responsavelCondutas">
-                            <option value="" >Escolha uma opção</option >
-                            <option value= "condutorVeiculoLeve">Condutor Veículo Leve</option >
-                            <option value= "condutorVeiculoPesado">Condutor Veículo Pesado</option >
-                            <option value= "motociclistaGarupa">Motociclista/Garupa</option >
-                            <option value= "motonetaGarupa">Motoneta/Garupa</option >
-                            <option value= "ciclista"> Ciclista</option >
-                            <option value= "condutorPassageiroVan"> Condutor/Passageiro/Van </option >
-                            <option value= "pedestre"> Pedestre </option >
 
-                        </select >
-                    </div >
+                        <div class="form-group col-md-8" >
+                            <label for="responsavelCondutas" >Possível responsavel pelas condutas de risco</label >
+                            <select name="responsavelCondutas"
+                                    id="responsavelCondutas"
+                                    class="form-control"
+                                    ng-model="condutas.responsavelCondutas">
+                                <option value="" >Escolha uma opção</option >
+                                <option value= "condutorVeiculoLeve">Condutor Veículo Leve</option >
+                                <option value= "condutorVeiculoPesado">Condutor Veículo Pesado</option >
+                                <option value= "motociclistaGarupa">Motociclista/Garupa</option >
+                                <option value= "motonetaGarupa">Motoneta/Garupa</option >
+                                <option value= "ciclista"> Ciclista</option >
+                                <option value= "condutorPassageiroVan"> Condutor/Passageiro/Van </option >
+                                <option value= "pedestre"> Pedestre </option >
+
+                            </select >
+                        </div >
+
+                    </div>
+
                     <!-- Usuário -->
                     <div class="row">
                         <h1>Quanto ao usuário</h1>
@@ -593,7 +620,7 @@
                     </div>
                     <div class="row container">
                         <h5><b>Principais causas avaliadas: </b></h5>
-                        <div class="col-sm-6" ng-repeat="c in causa">
+                        <div class="col-sm-4" ng-repeat="c in causa">
                             <div class="action-checkbox">
                                 <input id="{{c.name}}" type="checkbox" value="{{c.name}}" ng-checked="selection.indexOf(c.name) > -1" ng-click="toggleCausaSelection(c.id)" />
                                 <label for="{{c.name}}"></label>
@@ -614,7 +641,9 @@
                         <!--<div class="col-md-2"><input type="checkbox" ng-model="causa.fadigaDistracao">Fadiga ou distração</div>-->
                         <!--<div class="col-md-2"><input type="checkbox" ng-model="causa.outro">Outro</div>-->
                     <!--</div>-->
+
                     <div class="form-group">
+                        <span><br/></span>
                         <button class="btn btn-primary" ng-click="submit()">Registrar
                         </button>
                     </div>
