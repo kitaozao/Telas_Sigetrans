@@ -1,120 +1,132 @@
 <!DOCTYPE html >
-<html lang="en" ng-app="minmax">
-<head >
-    <title >Form Submission</title >
+<html lang="en" ng-app="codecraft">
+<head>
+    <title>Contacts</title>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
     <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>-->
     <!--<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
-
     <!--<link href="../libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" >-->
-    <link href="/stylesheets/test.css" rel="stylesheet" >
-</head >
 
-<body >
-<nav class="navbar navbar-inverse navbar-fixed-top" >
-    <div class="container" >
-        <div class="navbar-header" >
+    <link href="/stylesheets/test.css" rel="stylesheet">
+</head>
+
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
             <a class="navbar-brand"
-               href="/" >Form Validation - Part 2
-            </a >
-        </div >
-    </div >
-</nav >
+               href="/test">Contacts
+            </a>
+        </div>
+    </div>
+</nav>
 
-<div class="container main-content" ng-controller="MinMaxCtrl">
+<div class="container main-content">
 
-    <form ng-submit="onSubmit(theForm.$valid)"
-          name="theForm"
-          novalidate="novalidate">
-        <div class="form-group" >
-            <label for="name" >Name</label >
-            <input type="text"
-                   class="form-control"
-                   ng-model="formModel.name"
-                   id="name" >
-        </div >
+    <div class="row" >
+        <div class="col-md-8" ng-controller="PersonListController">
+            <div class="row">
+                <div class="col-md-12">
 
-        <div class="form-group" ng-class="
-			{
-			'has-error':!theForm.email.$valid && (!theForm.$pristine || theForm.$submitted),
-			'has-success':theForm.email.$valid && (!theForm.$pristine || theForm.$submitted)
-			}
-		">
-            <label for="email" class="control-label">Email</label >
-            <input type="email"
-                   class="form-control"
-                   ng-model="formModel.email"
-                   id="email"
-                   required="required"
-                   name="email">
+                    <form class="form-inline well well-sm">
+                        <span class="glyphicon glyphicon-search"></span>
 
-            <p class="help-block" ng-show="theForm.email.$error.required && (!theForm.$pristine || theForm.$submitted)">
-                This field is required
-            </p>
-            <p class="help-block" ng-show="theForm.email.$error.email && (!theForm.$pristine || theForm.$submitted)">
-                Please enter an email with at least an @ symbol
-            </p>
+                        <div class="form-group">
+                            <input type="text"
+                                   class="form-control"
+                                   id="name"
+                                   ng-model="search"
+                                   placeholder="Search name..."
+                            />
+                        </div>
 
-            <!--<pre>Validation {{ theForm.email.$error | json }}</pre>-->
-            <!--<pre>Field Valid? {{ theForm.email.$valid }}</pre>-->
-            <!--<pre>Form Pristine? {{ theForm.$pristine }}</pre>-->
-            <!--<pre>Form Submitted? {{ theForm.$submitted }}</pre>-->
+                        <span class="glyphicon glyphicon-sort-by-attributes"></span>
 
-        </div >
+                        <div class="form-group">
+                            <select class="form-control"
+                                    ng-model="order">
+                                <option value="name"> Name (ASC)</option>
+                                <option value="-name"> Name (DEC)</option>
+                                <option value="email"> Email (ASC)</option>
+                                <option value="-email"> Email (DEC)</option>
+                            </select>
+                        </div>
+                    </form>
 
-        <div class="form-group" >
-            <label for="username" >Username</label >
-            <input type="text"
-                   class="form-control"
-                   ng-model="formModel.username"
-                   id="username" >
-        </div >
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>#</th>
+                            <th>Name
+                                <span ng-click="order = 'name'" class="glyphicon glyphicon-menu-up"></span>
+                                <span ng-click="order = '-name'" class="glyphicon glyphicon-menu-down"></span>
 
-        <div class="form-group" >
-            <label for="age" >Age</label >
-            <input type="number"
-                   class="form-control"
-                   ng-model="formModel.age"
-                   id="age" >
-        </div >
+                            </th>
+                            <th>Email
+                                <span ng-click="order = 'email'" class="glyphicon glyphicon-menu-up"></span>
+                                <span ng-click="order = '-email'" class="glyphicon glyphicon-menu-down"></span>
+                            </th>
+                            <th>Birthday</th>
+                        </tr>
 
-        <div class="form-group" >
-            <label for="sex" >Sex</label >
-            <select id="sex"
-                    class="form-control"
-                    ng-model="formModel.sex" >
-                <option value="" >Please Choose</option >
-                <option value="male" >Male</option >
-                <option value="female" >Female</option >
-            </select >
-        </div >
-
-        <div class="form-group" >
-            <label for="password" >Password</label >
-            <input type="password"
-                   class="form-control"
-                   ng-model="formModel.password"
-                   id="password" >
-        </div >
-
-        <div class="form-group">
-            <button class="btn btn-primary"
-                    type="submit">Register
-            </button>
+                        <tr ng-repeat="person in filteredPersons = (contacts.persons | filter:sensitiveSearch | orderBy:order)"
+                            ng-style="{
+                        'background-color': person.email == contacts.selectedPerson.email ? 'lightgray':''
+                    }"
+                            ng-click="contacts.selectedPerson=person"
+                        >
+                            <td>{{ $index }}</td>
+                            <td>{{ person.name }}</td>
+                            <td>{{ person.email }}</td>
+                            <td>{{ person.birthdate | date:"longDate"}}</td>
+                        </tr>
+                        <tr ng-show="filteredPersons.length == 0">
+                            <td colspan="4">
+                                <div class="alert alert-info">
+                                    <p class="text-center">
+                                        No results found for search term '{{search}}'
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
 
-    </form >
+        <div class="col-md-4" ng-controller="PersonDetailController">
+            <div class="panel panel-default">
+                <div class="panel-heading">Details</div>
+                <div class="panel-body">
+                    <dl>
+                        <dt>Name</dt>
+                        <dd>{{contacts.selectedPerson.name}}</dd>
+                        <dt>Email</dt>
+                        <dd>{{contacts.selectedPerson.email}}</dd>
+                        <dt>Birthday</dt>
+                        <dd>{{contacts.selectedPerson.birthdate | date:"longDate"}}</dd>
+                        <dt>Phonenumber</dt>
+                        <dd>{{contacts.selectedPerson.phonenumber}}</dd>
+                        <dt>Address</dt>
+                        <dd>{{contacts.selectedPerson.address}}</dd>
+                        <dt>City</dt>
+                        <dd>{{contacts.selectedPerson.city}}</dd>
+                        <dt>Country</dt>
+                        <dd>{{contacts.selectedPerson.country}}</dd>
+                    </dl>
 
-    <pre>{{ theForm | json }}</pre>
 
-</div >
+                </div>
+            </div>
+
+            <pre>{{ search}}</pre>
+        </div>
+    </div>
+</div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<!--<script src="../libs/angular/angular.min.js" ></script >-->
 <script src="/javascripts/test.js"></script>
 
-<!--<script src="../libs/angular/angular.min.js" ></script >-->
-<!--<script src="main.js" ></script >-->
-
-
-</body >
-</html >
+</body>
+</html>
